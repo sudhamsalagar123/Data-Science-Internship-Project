@@ -1,95 +1,61 @@
-🧼 Customer Sales Data Preprocessing Pipeline
-This project demonstrates a complete data preprocessing workflow for a customer sales dataset, from data cleaning to feature engineering and transformation — preparing it for machine learning models.
+# Image-classification-model-using-pytorch
+FashionMNIST Classification with PyTorch This project uses a simple neural network to classify FashionMNIST images. It includes data loading, model training, evaluation, saving/loading, and visualization—perfect for beginners learning deep learning with PyTorch.
+# 🧠 FashionMNIST Classification with PyTorch
 
-📂 Project Overview
-Goal:
-To clean and preprocess customer data for machine learning, enabling predictive modeling — specifically to predict high-value customers based on behavior and demographics.
+This project demonstrates how to build a basic image classification model using PyTorch and the FashionMNIST dataset. It includes all the steps from data loading to training, evaluation, model saving, and visualization.
 
-✅ Steps Performed
-1. Load the Dataset
-Reads the dataset from customer_sales_dataset.csv
+## 📦 Dataset
 
-Displays shape, sample rows, summary statistics, and missing value counts
+The [FashionMNIST dataset](https://github.com/zalandoresearch/fashion-mnist) consists of 28x28 grayscale images of 10 fashion categories:
 
-2. Data Cleaning
-Date Parsing: Converts purchase_date to datetime
+- T-shirt/top
+- Trouser
+- Pullover
+- Dress
+- Coat
+- Sandal
+- Shirt
+- Sneaker
+- Bag
+- Ankle boot
 
-Missing Values:
+## 🚀 Features
 
-Numerical columns: Filled with mean
+- Uses `torchvision.datasets` to load FashionMNIST
+- Custom neural network built with `torch.nn`
+- Training and evaluation with accuracy and loss tracking
+- Saves and loads model using `torch.save()` and `torch.load()`
+- Visualizes predictions and dataset samples with `matplotlib`
 
-Categorical columns: Filled with most frequent (mode)
+## 🧪 Requirements
 
-email and address: Filled with placeholders
+- Python 3.7+
+- PyTorch
+- torchvision
+- matplotlib
+- numpy
 
-Ensures a clean dataset with no missing values
+Install requirements:
 
-3. Exploratory Data Analysis (Basic)
-Outputs distributions of:
+```bash
+        pip install torch torchvision matplotlib numpy
+##📈 Training the Model
+-Run the training script:
 
-Gender
+```bash
+    python main.py
+The script trains the model for 10 epochs and prints out the training loss and test accuracy at each epoch.
 
-Product categories
+##💾 Saving & Loading the Model
+-The trained model is saved as model.pth and can be reloaded for predictions:
 
-Saves a histogram plot of purchase amounts as purchase_distribution.png
+```python
+model.load_state_dict(torch.load("model.pth"))
+model.eval()
+##📊 Visualization
+-The script includes a section to visualize:
+-A prediction on a single test image
+-A 4x4 grid of training samples with labels
 
-4. Feature Engineering
-Extracted Features:
-
-purchase_month: Month from purchase_date
-
-loyalty_score: Combines recency and satisfaction score; clipped between 1–5
-
-high_value_customer: Flag for customers with above-average income and purchase amount
-
-5. Feature Preprocessing for Machine Learning
-Drops non-informative fields (customer_id, email, etc.)
-
-Splits data into train and test sets
-
-Defines:
-
-Numerical pipeline: Imputation + standard scaling
-
-Categorical pipeline: Imputation + one-hot encoding
-
-Applies transformations using ColumnTransformer
-
-Outputs the shape of the final preprocessed datasets
-
-6. Save Cleaned Data
-Saves the cleaned dataset to cleaned_customer_data.csv
-
-🧪 Output
-✅ cleaned_customer_data.csv: Cleaned and enriched data
-
-✅ purchase_distribution.png: Histogram plot of purchase amounts
-
-✅ X_train_processed & X_test_processed: Final processed feature arrays ready for modeling
-
-🚀 Next Steps
-You can now use the preprocessed data to:
-
-Train classification models (e.g., Logistic Regression, Random Forest)
-
-Evaluate model performance using y_test
-
-Tune hyperparameters or perform cross-validation
-
-🛠️ Libraries Used
-pandas, numpy
-
-matplotlib, seaborn
-
-scikit-learn (for imputation, scaling, encoding, splitting, and pipelines)
-
-📁 File Structure
-bash
-Copy
-Edit
-.
-├── customer_sales_dataset.csv           # Original dataset
-├── cleaned_customer_data.csv            # Cleaned and enriched dataset
-├── purchase_distribution.png            # Distribution plot
-├── your_preprocessing_script.py         # (The script you wrote)
-└── README.md                            # Project documentation
+##📝 License
+-This project is open-source and available under the MIT License.
